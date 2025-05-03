@@ -15,3 +15,11 @@ export interface tokens {
 }
 
 export interface authResponse extends tokens, User {}
+
+// home
+export interface Post {
+  id: string;
+  createdAt: string;
+  title: string;
+  commentCount: number;
+}
