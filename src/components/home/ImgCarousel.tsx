@@ -36,7 +36,7 @@ export default function ImgCarousel() {
               <p className="absolute top-6 left-6 w-[calc(100%-48px)] text-2xl leading-[1.6] font-bold tracking-[-0.072px] break-keep text-white">
                 {title}
               </p>
-              <div className="absolute bottom-6 left-6 w-[calc(100%-48px)] leading-[24px] tracking-[-0.0048px] text-white">
+              <div className="absolute bottom-6 left-6 w-[calc(100%-48px)] leading-[24px] tracking-[-0.048px] text-white">
                 <hr className="text-line mb-4" />
                 <p className="mb-2 line-clamp-2">{description}</p>
                 <p className="font-bold">{subtitle}</p>
