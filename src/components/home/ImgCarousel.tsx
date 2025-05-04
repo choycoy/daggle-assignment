@@ -11,22 +11,23 @@ export default function ImgCarousel() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
     centerMode: true,
-    variableWidth: true,
+    swipe: true,
+    draggable: true,
+    centerPadding: "28px",
   };
   const images = [img1, img2, img3, img4];
 
   return (
-    <div className="overflow-hidden px-4">
+    <div className="overflow-hidden">
       <Slider {...settings}>
         {images.map((src, index) => {
           const { title, description, subtitle, id } = dummyData[index];
           return (
-            <div key={id} className="relative h-[391px] w-[319px] px-2.5">
+            <div key={id} className="relative h-full w-full focus:outline-none">
               <img
                 src={src}
                 alt={`슬라이드 ${index + 1}: ${title}`}
