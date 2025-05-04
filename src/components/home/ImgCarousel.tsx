@@ -11,22 +11,23 @@ export default function ImgCarousel() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
     slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     arrows: false,
     centerMode: true,
-    variableWidth: true,
+    swipe: true,
+    draggable: true,
+    centerPadding: "28px",
   };
   const images = [img1, img2, img3, img4];
 
   return (
-    <div className="overflow-hidden px-4">
+    <div className="overflow-hidden">
       <Slider {...settings}>
         {images.map((src, index) => {
           const { title, description, subtitle, id } = dummyData[index];
           return (
-            <div key={id} className="relative h-[391px] w-[319px] px-2.5">
+            <div key={id} className="relative h-full w-full focus:outline-none">
               <img
                 src={src}
                 alt={`슬라이드 ${index + 1}: ${title}`}
@@ -36,7 +37,7 @@ export default function ImgCarousel() {
               <p className="absolute top-6 left-6 w-[calc(100%-48px)] text-2xl leading-[1.6] font-bold tracking-[-0.072px] break-keep text-white">
                 {title}
               </p>
-              <div className="absolute bottom-6 left-6 w-[calc(100%-48px)] leading-[24px] tracking-[-0.0048px] text-white">
+              <div className="absolute bottom-6 left-6 w-[calc(100%-48px)] leading-[24px] tracking-[-0.048px] text-white">
                 <hr className="text-line mb-4" />
                 <p className="mb-2 line-clamp-2">{description}</p>
                 <p className="font-bold">{subtitle}</p>

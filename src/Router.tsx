@@ -1,18 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Layout from "./components/common/Layout";
 import { lazy, Suspense } from "react";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Router = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <Suspense fallback={<div />}>
         <Routes>
           <Route index path="/" element={<Home />} />
         </Routes>
       </Suspense>
-    </>
+    </Layout>
   );
 };
 export default Router;

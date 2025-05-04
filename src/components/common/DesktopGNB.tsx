@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import LogoImg from "@/assets/imgs/logo.png";
 
-export default function Header() {
+export default function DesktopGNB() {
   const [showNickname, setShowNickname] = useState(false);
   const { user, isLoggedIn } = useAuthStore();
   const location = useLocation();
@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <header className="border-b-gray-03 shadow-header fixed top-0 left-0 z-50 flex h-[86px] w-full items-center justify-between border-b bg-white px-[120px]">
+    <header className="shadow-header border-gray-03 fixed top-0 left-0 z-50 flex h-[86px] w-full items-center justify-between border-b bg-white px-[120px]">
       <Link to="/" onClick={handleLogoClick}>
         <img src={LogoImg} alt="다글제작소 로고" className="h-6 w-[120px]" />
       </Link>
