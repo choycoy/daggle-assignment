@@ -4,17 +4,22 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import useDisableScroll from "@/hooks/common/useDisableScroll";
+import useLogout from "@/hooks/auth/useLogout";
 
 export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boolean) => void }) {
   const { user, isLoggedIn } = useAuthStore();
   const location = useLocation();
   useDisableScroll(true);
-
+  const { logout } = useLogout();
   const handleClick = (e: React.MouseEvent, id: number) => {
     if (location.pathname === "/" && id === 1) {
       e.preventDefault();
     }
     setShowDrawer(false);
+  };
+  const handleLogout = () => {
+    const confirmed = window.confirm("로그아웃 하시겠습니까?");
+    if (confirmed) logout();
   };
 
   return (
@@ -37,13 +42,17 @@ export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boole
         )}
         <hr className="w-[calc(100%-32px) text-gray-03" />
         <ul className="flex flex-col gap-y-6">
-          {MENU_LIST.map((menu) => {
+          {MENU_LIST.map((menu, index) => {
             const { id, item, path } = menu;
             return (
               <li key={id} className="leading-[24px] tracking-[-0.048px]">
-                <Link to={path} onClick={(e) => handleClick(e, id)}>
-                  {item}
-                </Link>
+                {index === 0 && isLoggedIn ? (
+                  <button onClick={handleLogout}>로그아웃</button>
+                ) : (
+                  <Link to={path} onClick={(e) => handleClick(e, id)}>
+                    {item}
+                  </Link>
+                )}
               </li>
             );
           })}
