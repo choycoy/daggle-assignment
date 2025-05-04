@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import LogoImg from "@/assets/imgs/logo.png";
 
-export default function Header() {
+export default function DesktopGNB() {
   const [showNickname, setShowNickname] = useState(false);
   const { user, isLoggedIn } = useAuthStore();
   const location = useLocation();
