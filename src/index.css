@@ -19,43 +19,10 @@
   background-color: white;
 }
 
-@layer base {
-  *,
-  *::before,
-  *::after {
-    @apply outline-primary;
-  }
-}
 @layer components {
   .slick-slide {
-    @apply mx-2.5 !h-[391px] !w-[319px];
-  }
-
-  .input {
-    @apply placeholder:text-gray-06 border-gray-03 w-full rounded-lg border px-4 py-3 placeholder:leading-[24px] placeholder:tracking-[-0.048px];
-  }
-
-  .shadow-header {
-    @apply shadow-[0_9px_10px_rgba(232,232,232,0.25)];
-  }
-
-  .shadow-nickname {
-    @apply shadow-[4px_4px_10px_rgba(120,120,120,0.25)];
-  }
-
-  .shadow-writing {
-    @apply shadow-[0_4px_5px_rgba(159,159,159,0.25)];
-  }
-
-  .shadow-login {
-    @apply tab:shadow-[0_18px_30px_rgba(177,177,177,0.06)];
-  }
-
-  .error-msg {
-    @apply text-error ml-2 text-sm leading-[21px] font-semibold tracking-[-0.042px];
-  }
-
-  .login-tab {
-    @apply tab:border-gray-03 tab:rounded-xl tab:border tab:px-8 tab:py-10;
+    width: 319px !important;
+    height: 391px !important;
+    margin: 0 10px;
   }
 }
