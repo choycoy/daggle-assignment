@@ -19,7 +19,10 @@ export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boole
   };
   const handleLogout = () => {
     const confirmed = window.confirm("로그아웃 하시겠습니까?");
-    if (confirmed) logout();
+    if (confirmed) {
+      logout();
+      setShowDrawer(false);
+    }
   };
 
   return (
@@ -30,12 +33,16 @@ export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boole
         </button>
         {isLoggedIn ? (
           <div className="flex items-center gap-x-2">
-            <img
-              src={user?.profileImageUrl}
-              alt={user?.nickname + "프로필 이미지"}
-              className="h-[27px] w-[27px] rounded-full"
-            />
-            <p className="leading-[24px] font-bold tracking-[-0.048px]">{user?.nickname}</p>
+            {user?.profileImageUrl ? (
+              <img
+                src={user?.profileImageUrl}
+                alt={`${user?.nickname ?? "다글다글"} 님의 프로필 이미지`}
+                className="h-[27px] w-[27px] rounded-full"
+              />
+            ) : (
+              <div className="bg-gray-06 h-[27px] w-[27px] rounded-full" />
+            )}
+            <p className="leading-[24px] font-bold tracking-[-0.048px]">{user?.nickname ?? "다글다글"}</p>
           </div>
         ) : (
           <p>로그인</p>
