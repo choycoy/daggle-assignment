@@ -7,9 +7,9 @@ export default function Layout({ children }: { children: ReactNode }) {
   const isMobile = useMediaQuery("(max-width: 641px)");
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="flex min-h-screen w-full flex-col">
       {isMobile ? <MobileGNB /> : <DesktopGNB />}
-      <main className="tab:bg-gray-01 desktop:px-[120px] tab:pt-[186px] tab:pb-[100px] tab:px-[30px] w-full pt-14">
+      <main className="tab:bg-gray-01 desktop:px-[120px] tab:pt-[186px] tab:pb-[100px] tab:px-[30px] tab:flex tab:items-center tab:justify-center flex-1 pt-14">
         {children}
       </main>
     </div>
