@@ -7,18 +7,15 @@
   --color-gray-03: #eeeff1;
   --color-gray-04: #d6d7dc;
   --color-gray-06: #a7a9b4;
+  --color-error: #d11111;
   --color-label: #5e616e;
   --color-line: #d6d7de;
   --color-alt: #f4f4f6;
   --color-primary: #6025e1;
-  --shadow-header: 0 9px 10px rgba(232, 232, 232, 0.25);
-  --shadow-nickname: 4px 4px 10px rgba(120, 120, 120, 0.25);
-  --shadow-writing: 0 4px 5px rgba(159, 159, 159, 0.25);
 }
 
 :root {
   font-family: "Pretendard", Inter, sans-serif;
-  color: #000000;
   background-color: white;
 }
 
