@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import LogoImg from "@/assets/imgs/logo.png";
+import useIsLogin from "@/hooks/auth/useIsLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function DesktopGNB() {
   const [showNickname, setShowNickname] = useState(false);
   const { user, isLoggedIn } = useAuthStore();
   const location = useLocation();
-
+  const navigate = useNavigate();
+  useIsLogin();
   const handleLogoClick = (e: React.MouseEvent) => {
     if (location.pathname === "/") {
       e.preventDefault();
@@ -22,20 +25,26 @@ export default function DesktopGNB() {
         <img src={LogoImg} alt="다글제작소 로고" className="h-6 w-[120px]" />
       </Link>
       {isLoggedIn ? (
-        <button onClick={() => setShowNickname(true)} aria-label="닉네임 보기">
+        <button onClick={() => setShowNickname(!showNickname)} aria-label="프로필 보기" className="cursor-pointer">
           <img src={profileIcon} alt="프로필 아이콘" />
         </button>
       ) : (
-        <span className="text-lg leading-[32px] font-semibold whitespace-nowrap">로그인</span>
+        <button className="text-lg leading-[32px] font-semibold whitespace-nowrap" onClick={() => navigate("/login")}>
+          로그인
+        </button>
       )}
       {showNickname && (
         <div className="shadow-nickname fixed top-[105px] right-[120px] flex items-center gap-x-3 rounded-xl bg-white px-6 py-5">
-          <img
-            src={user?.profileImageUrl}
-            alt={`${user?.nickname} 님의 프로필 이미지`}
-            className="h-8 w-8 rounded-full"
-          />
-          <span className="text-lg leading-[1.5] font-semibold">{user?.nickname} 님</span>
+          {user?.profileImageUrl ? (
+            <img
+              src={user.profileImageUrl}
+              alt={`${user?.nickname ?? "다글다글"} 님의 프로필 이미지`}
+              className="h-8 w-8 rounded-full"
+            />
+          ) : (
+            <div className="bg-gray-06 h-8 w-8 rounded-full" />
+          )}
+          <p className="text-lg leading-[1.5] font-semibold">{user?.nickname ?? "다글다글"} 님</p>
         </div>
       )}
     </header>
