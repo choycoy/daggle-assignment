@@ -7,25 +7,55 @@
   --color-gray-03: #eeeff1;
   --color-gray-04: #d6d7dc;
   --color-gray-06: #a7a9b4;
+  --color-error: #d11111;
   --color-label: #5e616e;
   --color-line: #d6d7de;
   --color-alt: #f4f4f6;
   --color-primary: #6025e1;
-  --shadow-header: 0 9px 10px rgba(232, 232, 232, 0.25);
-  --shadow-nickname: 4px 4px 10px rgba(120, 120, 120, 0.25);
-  --shadow-writing: 0 4px 5px rgba(159, 159, 159, 0.25);
 }
 
 :root {
   font-family: "Pretendard", Inter, sans-serif;
-  color: #000000;
   background-color: white;
 }
 
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply outline-primary;
+  }
+}
 @layer components {
   .slick-slide {
-    width: 319px !important;
-    height: 391px !important;
-    margin: 0 10px;
+    @apply mx-2.5 !h-[391px] !w-[319px];
+  }
+
+  .input {
+    @apply placeholder:text-gray-06 border-gray-03 w-full rounded-lg border px-4 py-3 placeholder:leading-[24px] placeholder:tracking-[-0.048px];
+  }
+
+  .shadow-header {
+    @apply shadow-[0_9px_10px_rgba(232,232,232,0.25)];
+  }
+
+  .shadow-nickname {
+    @apply shadow-[4px_4px_10px_rgba(120,120,120,0.25)];
+  }
+
+  .shadow-writing {
+    @apply shadow-[0_4px_5px_rgba(159,159,159,0.25)];
+  }
+
+  .shadow-login {
+    @apply tab:shadow-[0_18px_30px_rgba(177,177,177,0.06)];
+  }
+
+  .error-msg {
+    @apply text-error ml-2 text-sm leading-[21px] font-semibold tracking-[-0.042px];
+  }
+
+  .login-tab {
+    @apply tab:border-gray-03 tab:rounded-xl tab:border tab:px-8 tab:py-10;
   }
 }
