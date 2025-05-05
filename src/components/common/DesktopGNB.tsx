@@ -29,7 +29,10 @@ export default function DesktopGNB() {
           <img src={profileIcon} alt="프로필 아이콘" />
         </button>
       ) : (
-        <button className="text-lg leading-[32px] font-semibold whitespace-nowrap" onClick={() => navigate("/login")}>
+        <button
+          className="cursor-pointer text-lg leading-[32px] font-semibold whitespace-nowrap"
+          onClick={() => navigate("/login")}
+        >
           로그인
         </button>
       )}
