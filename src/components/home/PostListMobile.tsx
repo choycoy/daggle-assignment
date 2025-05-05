@@ -28,7 +28,7 @@ export default function PostListMobile({ handleWritingClick }: { handleWritingCl
         <div ref={observerRef} className="h-1" />
         <div className="pointer-events-none sticky bottom-0 left-0 h-[106px] w-full bg-gradient-to-t from-white to-white/0" />
         <button
-          className="bg-primary shadow-writing fixed right-4 bottom-[50px] z-20 h-14 w-14 rounded-full p-4"
+          className="primary-btn shadow-writing fixed right-4 bottom-[50px] z-20 h-14 w-14 rounded-full p-4"
           onClick={handleWritingClick}
           aria-label="글쓰기"
         >
