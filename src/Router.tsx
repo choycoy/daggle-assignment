@@ -5,6 +5,7 @@ import PublicRoute from "./PublicRoute";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Login = lazy(() => import("@/pages/Login"));
+const PostDetail = lazy(() => import("@/pages/PostDetail"));
 const Router = () => {
   return (
     <Layout>
@@ -19,6 +20,7 @@ const Router = () => {
               </PublicRoute>
             }
           />
+          <Route path="/post/:id" element={<PostDetail />} />
         </Routes>
       </Suspense>
     </Layout>

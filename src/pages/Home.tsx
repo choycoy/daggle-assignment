@@ -31,7 +31,7 @@ export default function Home() {
         <ImgCarousel />
       </section>
       <div className="tab:hidden bg-alt relative h-3 w-full" />
-      <section className="tab:pt-0 tab:px-0 w-full bg-white px-4 pt-8">
+      <section className="tab:pt-0 tab:px-0 w-full rounded-xl bg-white px-4 pt-8">
         <div className="tab:border-gray-03 tab:h-24 tab:border-b tab:px-6 flex w-full items-center justify-between">
           <p className="tab:text-2xl tab:tracking-[-0.072px] tab:mb-0 mb-4 text-xl leading-[1.6] font-bold tracking-[-0.06px]">
             게시판

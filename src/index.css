@@ -20,6 +20,7 @@
 :root {
   font-family: "Pretendard", Inter, sans-serif;
   background-color: white;
+  outline: none;
 }
 
 @layer base {

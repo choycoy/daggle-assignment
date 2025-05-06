@@ -1,4 +1,4 @@
-import commentIcon from "@/assets/icons/comment.svg";
+import commentIcon from "@/assets/icons/comment-gray06.svg";
 import { Post } from "@/types/interface";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";

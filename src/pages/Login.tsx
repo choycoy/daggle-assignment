@@ -4,7 +4,7 @@ export default function Login() {
   const { id, pwd, setInput, setError, idMsg, pwdMsg, handleKeyDown, handleLogin } = useLoginLogic();
 
   return (
-    <div className="tab:flex tab:items-center tab:justify-center tab:px-0 tab:pt-0 h-full w-full px-4 pt-6">
+    <div className="tab:flex tab:items-center tab:justify-center tab:px-0 tab:pt-0 tab: h-[calc(100vh-86px)] w-full px-4 pt-6">
       <section className="login-tab tab:w-[454px] shadow-login w-full bg-white">
         <h1 className="leading-1.6 text-[32px] font-bold tracking-[-0.48px]">
           안녕하세요
