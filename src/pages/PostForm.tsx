@@ -54,7 +54,7 @@ export default function PostForm() {
                   if (contentMsg) setError((prev) => ({ ...prev, contentMsg: "" }));
                 }}
                 placeholder="내용을 입력해주세요."
-                className={`placeholder:text-assistive h-full w-full rounded-lg px-4 pt-4 leading-[24px] tracking-[-0.048px] ${contentMsg ? "border-error border-2" : "border-gray-03 border"}`}
+                className={`placeholder:text-assistive h-full w-full resize-none rounded-lg px-4 pt-4 leading-[24px] tracking-[-0.048px] ${contentMsg ? "border-error border-2" : "border-gray-03 border"}`}
               />
               <p className="text-gray-07 tab:bottom-10 absolute right-0 bottom-4 pr-4 text-right text-xs leading-[16.8px] tracking-[-0.036px]">
                 {content.length}/300
