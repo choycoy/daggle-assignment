@@ -6,6 +6,7 @@ import PublicRoute from "./PublicRoute";
 const Home = lazy(() => import("@/pages/Home"));
 const Login = lazy(() => import("@/pages/Login"));
 const PostDetail = lazy(() => import("@/pages/PostDetail"));
+const PostForm = lazy(() => import("@/pages/PostForm"));
 const Router = () => {
   return (
     <Layout>
@@ -21,6 +22,7 @@ const Router = () => {
             }
           />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/post/write" element={<PostForm />} />
         </Routes>
       </Suspense>
     </Layout>

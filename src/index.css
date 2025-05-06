@@ -15,6 +15,7 @@
   --color-primary: #6025e1;
   --color-primary-hover: #5522c3;
   --color-primary-active: #320397;
+  --color-assistive: #c8c9d0;
 }
 
 :root {
@@ -37,7 +38,7 @@
   }
 
   .input {
-    @apply placeholder:text-gray-06 border-gray-03 w-full rounded-lg border px-4 py-3 placeholder:leading-[24px] placeholder:tracking-[-0.048px];
+    @apply placeholder:text-gray-06 border-gray-03 w-full rounded-lg border px-4 py-3 leading-[24px] tracking-[-0.048px];
   }
 
   .shadow-header {
