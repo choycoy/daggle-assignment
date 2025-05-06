@@ -17,7 +17,9 @@ export const ERROR_MESSAGES = {
   loginRequired: "로그인 후 이용하실 수 있어요",
   refreshRequired: "로그인 세션이 만료되었어요. 다시 로그인해 주세요.",
   deleteForbiddenMsg: "댓글 작성자만 삭제할 수 있어요.",
-  modifyForbiddenMsg: "댓글 작성자만 수정할 수 있어요.",
+  editForbiddenMsg: "댓글 작성자만 수정할 수 있어요.",
   logout: "로그아웃 하시겠어요?",
   deletePost: "게시글을 삭제할까요?",
+  titleLengthError: "최소 1자 이상 입력해주세요.",
+  contentLengthError: "최소 5자 이상 입력해주세요.",
 };

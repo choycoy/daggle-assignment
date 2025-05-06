@@ -4,7 +4,7 @@ import { QUERY_KEYS, ERROR_MESSAGES } from "@/constant";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
-export default function useModifyComment() {
+export default function useEditComment() {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async ({
@@ -18,7 +18,7 @@ export default function useModifyComment() {
       commentId: string;
       content: string;
     }) => {
-      const response = await commentApis.modifyComment(postId, accessToken, commentId, content);
+      const response = await commentApis.editComment(postId, accessToken, commentId, content);
       return response;
     },
     onSuccess: () => {
@@ -26,11 +26,11 @@ export default function useModifyComment() {
     },
     onError: (error: AxiosError) => {
       if (error?.response?.status === 403) {
-        alert(ERROR_MESSAGES.modifyForbiddenMsg);
+        alert(ERROR_MESSAGES.editForbiddenMsg);
       } else {
         alert("댓글 수정에 실패했습니다. 다시 시도해주세요.");
       }
     },
   });
-  return { modifyComment: mutation.mutate };
+  return { editComment: mutation.mutate };
 }
