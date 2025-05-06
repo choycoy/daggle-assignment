@@ -17,5 +17,35 @@ const postApis = {
     const { data } = await client.delete(`/posts/${postId}`);
     return data;
   },
+  createPost: async (title: string, content: string, accessToken: string | null) => {
+    const { data } = await client.post(
+      "/posts",
+      {
+        title,
+        content,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+    return data;
+  },
+  modifyPost: async (postId: string | undefined, title: string, content: string, accessToken: string | null) => {
+    const { data } = await client.patch(
+      `/posts/${postId}`,
+      {
+        title,
+        content,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+    return data;
+  },
 };
 export default postApis;

@@ -21,7 +21,7 @@ const commentApis = {
     );
     return data;
   },
-  modifyComment: async (postId: string | undefined, accessToken: string | null, commentId: string, content: string) => {
+  editComment: async (postId: string | undefined, accessToken: string | null, commentId: string, content: string) => {
     const { data } = await client.patch(
       `/posts/${postId}/comments/${commentId}`,
       { content },

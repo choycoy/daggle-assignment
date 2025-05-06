@@ -6,7 +6,7 @@ import useDeletePost from "@/hooks/postDetail/post/useDeletePost";
 import { useNavigate } from "react-router-dom";
 
 export default function PostBody({ postId, accessToken }: { postId: string | undefined; accessToken: string | null }) {
-  const { postInfo, isPostLoading } = useGetPost(postId, accessToken);
+  const { postInfo, isPostLoading } = useGetPost(postId, accessToken, false);
   const { deletePost } = useDeletePost(postId);
   const navigate = useNavigate();
 

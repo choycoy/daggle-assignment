@@ -1,4 +1,4 @@
-import useModifyComment from "@/hooks/postDetail/comment/useModifyComment";
+import useEditComment from "@/hooks/postDetail/comment/useEditComment";
 import { useState } from "react";
 import usePostComment from "@/hooks/postDetail/comment/usePostComment";
 import { Comment } from "@/types/interface";
@@ -7,7 +7,7 @@ export default function useCommentSection(postId: string | undefined, accessToke
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [editCommentId, setEditCommentId] = useState<string | null>(null);
-  const { modifyComment } = useModifyComment();
+  const { editComment } = useEditComment();
   const { postComment } = usePostComment();
   const onEnterSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && onSubmit();
 
@@ -26,7 +26,7 @@ export default function useCommentSection(postId: string | undefined, accessToke
   const onSubmit = () => {
     if (!input) return;
     if (isEditing && editCommentId) {
-      modifyComment({
+      editComment({
         postId,
         accessToken,
         commentId: editCommentId,

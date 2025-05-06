@@ -1,9 +1,17 @@
 import CommentSection from "@/components/postDetail/CommentSection";
 import PostBody from "@/components/postDetail/PostBody";
-import usePostDetailLogic from "@/hooks/postDetail/usePostDetailLogic";
+import { useParams } from "react-router-dom";
+import { ACCESS_TOKEN_KEY } from "@/constant";
+import useAuthRedirect from "@/hooks/common/useAuthRedirect";
+import { isTokenExpired } from "@/utils/commonUtils";
 
 export default function PostDetail() {
-  const { postId, accessToken } = usePostDetailLogic();
+  const { id } = useParams();
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const isValidToken = !!accessToken && !isTokenExpired(accessToken);
+  useAuthRedirect(isValidToken);
+  const postId = id;
+
   if (!postId || !accessToken) return null;
 
   return (
