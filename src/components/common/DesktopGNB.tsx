@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import LogoImg from "@/assets/imgs/logo.png";
-import useIsLogin from "@/hooks/auth/useIsLogin";
 import { useNavigate } from "react-router-dom";
 
 export default function DesktopGNB() {
@@ -12,7 +11,6 @@ export default function DesktopGNB() {
   const { user, isLoggedIn } = useAuthStore();
   const location = useLocation();
   const navigate = useNavigate();
-  useIsLogin();
   const handleLogoClick = (e: React.MouseEvent) => {
     if (location.pathname === "/") {
       e.preventDefault();
@@ -29,7 +27,10 @@ export default function DesktopGNB() {
           <img src={profileIcon} alt="프로필 아이콘" />
         </button>
       ) : (
-        <button className="text-lg leading-[32px] font-semibold whitespace-nowrap" onClick={() => navigate("/login")}>
+        <button
+          className="cursor-pointer text-lg leading-[32px] font-semibold whitespace-nowrap"
+          onClick={() => navigate("/login")}
+        >
           로그인
         </button>
       )}

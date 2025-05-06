@@ -1,5 +1,5 @@
-import arrowLeftIcon from "@/assets/icons/arrow-left.svg";
-import arrowRightIcon from "@/assets/icons/arrow-right.svg";
+import chevronLeft from "@/assets/icons/chevron-left-gray06.svg";
+import chevronRight from "@/assets/icons/chevron-right-gray06.svg";
 import { useState } from "react";
 import useGetPosts from "@/hooks/home/useGetPosts";
 import PostList from "./PostList";
@@ -23,7 +23,7 @@ export default function PostListDesktop() {
           aria-label="이전 페이지로 이동"
           className={`${currentPage === 1 ? "cursor-not-allowed" : "cursor-pointer"}`}
         >
-          <img src={arrowLeftIcon} alt="w-9 h-9" />
+          <img src={chevronLeft} alt="w-9 h-9" />
         </button>
         {Array.from({ length: totalPages }, (_, i) => (
           <button
@@ -43,7 +43,7 @@ export default function PostListDesktop() {
           aria-label="다음 페이지로 이동"
           className={`${currentPage === totalPages ? `cursor-not-allowed` : `cursor-pointer`}`}
         >
-          <img src={arrowRightIcon} alt="w-9 h-9" />
+          <img src={chevronRight} alt="w-9 h-9" />
         </button>
       </div>
     </>

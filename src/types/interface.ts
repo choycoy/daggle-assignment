@@ -23,3 +23,14 @@ export interface Post {
   title: string;
   commentCount: number;
 }
+
+// post detail
+export interface Comment {
+  id: string;
+  createdAt: string;
+  content: string;
+  user: {
+    id: string;
+    nickname: string;
+  };
+}
