@@ -3,18 +3,10 @@ import commentApis from "@/api/commentApis";
 import { QUERY_KEYS, ERROR_MESSAGES } from "@/constant";
 import { AxiosError } from "axios";
 
-export default function useEditComment() {
+export default function useEditComment(postId: string | undefined) {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: async ({
-      postId,
-      commentId,
-      content,
-    }: {
-      postId: string | undefined;
-      commentId: string;
-      content: string;
-    }) => {
+    mutationFn: async ({ commentId, content }: { commentId: string; content: string }) => {
       const response = await commentApis.editComment(postId, commentId, content);
       return response;
     },
