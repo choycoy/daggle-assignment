@@ -17,7 +17,7 @@ export default function PostBody({ postId }: { postId: string | undefined }) {
     <div
       className={`text-gray-06 tab:text-base tab:leading-[24px] tab:tracking-[-0.048px] flex items-center gap-x-3 text-sm leading-[21px] tracking-[-0.042px] ${!isAuthor ? "tab:my-6 mt-2 mb-4" : ""}`}
     >
-      <p>{author.nickname}</p>
+      <p>{author.nickname ?? "익명"}</p>
       <span className="bg-gray-03 h-5 w-0.5" />
       <p>{dayjs(author.createdAt).format("YYYY.MM.DD")}</p>
     </div>
