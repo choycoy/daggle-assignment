@@ -15,13 +15,19 @@ export default function PostForm() {
           extraCondition={isBtnDisabled}
         />
       )}
-      <div className="tab:pb-20 tab:px-0 tab:gap-y-12 flex flex-col items-center px-4">
-        <section className="tab:mt-6 tab:mb-20 tab:p-6 tab:rounded-xl tab:border tab:border-gray-03 tab:text-xl w-full bg-white">
+      <section className="tab:pb-20 tab:px-0 tab:gap-y-12 flex flex-col items-center px-4">
+        <div className="tab:mt-6 tab:mb-20 tab:p-6 tab:rounded-xl tab:border tab:border-gray-03 tab:text-xl w-full bg-white">
           <h1 className="tab:text-xl tab:leading-[32px] tab:block mb-6 hidden font-bold tracking-[-0.06px]">
             {isEdit ? "게시글 수정" : "게시글 작성"}
           </h1>
-          <div className="tab:mb-0 flex flex-col">
-            <div className="tab:mb-4 mb-3 w-full">
+          <form
+            className="flex w-full flex-col"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
+            <div className="tab:mb-4 mb-3">
               <label htmlFor="title" className="sr-only">
                 제목
               </label>
@@ -61,16 +67,17 @@ export default function PostForm() {
               </p>
             </div>
             {contentMsg && <p className="error-msg mt-2 ml-2">{contentMsg}</p>}
-          </div>
-        </section>
+          </form>
+        </div>
         <button
+          type="submit"
           className={`black-btn tab:block hidden h-[59px] w-[200px] rounded-xl py-4 text-lg leading-[27px] font-semibold ${isBtnDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}
           onClick={handleSubmit}
           disabled={isBtnDisabled}
         >
           {isEdit ? "수정하기" : "등록하기"}
         </button>
-      </div>
+      </section>
     </>
   );
 }
