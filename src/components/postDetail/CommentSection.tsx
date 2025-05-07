@@ -3,11 +3,14 @@ import { Comment } from "@/types/interface";
 import useCommentSection from "@/hooks/postDetail/comment/useCommentSection";
 import useDeleteComment from "@/hooks/postDetail/comment/useDeleteComment";
 import useGetComments from "@/hooks/postDetail/comment/useGetComments";
+import { USER_ID } from "@/constant";
 
 export default function CommentSection({ postId }: { postId: string | undefined }) {
   const { comments, isCommentsLoading } = useGetComments(postId);
   const { input, setInput, startEditing, isEditing, onEnterSubmit, onSubmit } = useCommentSection(postId);
   const { deleteComment } = useDeleteComment();
+  const userId = localStorage.getItem(USER_ID);
+
   if (!comments || isCommentsLoading) return null;
 
   return (
@@ -16,6 +19,7 @@ export default function CommentSection({ postId }: { postId: string | undefined 
         <ul className="bg-gray-01 tab:mb-0 mb-24 flex flex-col">
           {comments.map((comment: Comment) => {
             const { id, content, user, createdAt } = comment;
+            const isAuthor = user.id === userId;
 
             return (
               <li
@@ -27,18 +31,20 @@ export default function CommentSection({ postId }: { postId: string | undefined 
                     <div className="tab:bg-gray-06 bg-gray-04 h-6 w-6 rounded-full" />
                     <p>{user.nickname ?? "익명"}</p>
                   </div>
-                  <div className="text-gray-06 flex items-center gap-x-3">
-                    <button type="button" className="cursor-pointer" onClick={() => startEditing(comment)}>
-                      수정
-                    </button>
-                    <button
-                      type="button"
-                      className="cursor-pointer"
-                      onClick={() => deleteComment({ postId: postId, commentId: id })}
-                    >
-                      삭제
-                    </button>
-                  </div>
+                  {isAuthor && (
+                    <div className="text-gray-06 flex items-center gap-x-3">
+                      <button type="button" className="cursor-pointer" onClick={() => startEditing(comment)}>
+                        수정
+                      </button>
+                      <button
+                        type="button"
+                        className="cursor-pointer"
+                        onClick={() => deleteComment({ postId: postId, commentId: id })}
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <p className="text-gray-08 text-base leading-[24px] tracking-[-0.048px]">{content}</p>
                 <p className="text-gray-06 tab:text-base tab:leading-[24px] tab:tracking-[-0.048px] text-xs leading-[16.8px] tracking-[-0.036px]">
