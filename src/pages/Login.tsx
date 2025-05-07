@@ -27,6 +27,7 @@ export default function Login() {
             <input
               id="id"
               type="text"
+              autoComplete="username"
               className={`input ${idMsg ? "border-error mb-2 border-2" : "mb-3"}`}
               onChange={(e) => {
                 setInput((prev) => ({ ...prev, id: e.target.value }));
@@ -45,6 +46,7 @@ export default function Login() {
             <input
               id="pwd"
               type="password"
+              autoComplete="current-password"
               className={`input ${pwdMsg ? "border-error mb-2 border-2" : "mb-3"}`}
               onChange={(e) => {
                 setInput((prev) => ({ ...prev, pwd: e.target.value }));

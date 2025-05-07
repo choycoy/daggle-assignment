@@ -1,7 +1,7 @@
 import { useAuthStore } from "@/store/useAuthStore";
 import authApis from "@/api/authApis";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { REFRESH_TOKEN_KEY, ACCESS_TOKEN_KEY } from "@/constant";
+import { REFRESH_TOKEN_KEY, ACCESS_TOKEN_KEY, USER_ID } from "@/constant";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { ERROR_MESSAGES } from "@/constant";
@@ -24,6 +24,7 @@ export default function useLogin(loginId: string, password: string) {
       setUser(user);
       localStorage.setItem(ACCESS_TOKEN_KEY, tokens.accessToken);
       localStorage.setItem(REFRESH_TOKEN_KEY, tokens.refreshToken);
+      localStorage.setItem(USER_ID, user.id);
       const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     },

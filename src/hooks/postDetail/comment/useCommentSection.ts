@@ -7,8 +7,8 @@ export default function useCommentSection(postId: string | undefined) {
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [editCommentId, setEditCommentId] = useState<string | null>(null);
-  const { editComment } = useEditComment();
-  const { postComment } = usePostComment();
+  const { editComment } = useEditComment(postId);
+  const { postComment } = usePostComment(postId);
   const onEnterSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && onSubmit();
 
   const startEditing = (comment: Comment) => {
@@ -27,13 +27,11 @@ export default function useCommentSection(postId: string | undefined) {
     if (!input) return;
     if (isEditing && editCommentId) {
       editComment({
-        postId,
         commentId: editCommentId,
         content: input,
       });
     } else {
       postComment({
-        postId,
         content: input,
       });
     }
