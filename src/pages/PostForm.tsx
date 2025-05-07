@@ -70,7 +70,7 @@ export default function PostForm() {
           </form>
         </div>
         <button
-          type="submit"
+          type="button"
           className={`black-btn tab:block hidden h-[59px] w-[200px] rounded-xl py-4 text-lg leading-[27px] font-semibold ${isBtnDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}
           onClick={handleSubmit}
           disabled={isBtnDisabled}
