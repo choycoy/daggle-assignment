@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/useAuthStore";
 import authApis from "@/api/authApis";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { REFRESH_TOKEN_KEY, ACCESS_TOKEN_KEY } from "@/constant";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -10,6 +10,7 @@ export default function useLogin(loginId: string, password: string) {
   const { setIsLoggedIn, setUser } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: async () => {
@@ -17,6 +18,7 @@ export default function useLogin(loginId: string, password: string) {
       return response;
     },
     onSuccess: (data) => {
+      queryClient.invalidateQueries();
       const { user, tokens } = data;
       setIsLoggedIn(true);
       setUser(user);
