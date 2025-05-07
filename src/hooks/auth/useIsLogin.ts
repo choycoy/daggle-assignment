@@ -3,7 +3,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constant";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import authApis from "@/api/authApis";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { isTokenExpired } from "@/utils/commonUtils";
 import { ERROR_MESSAGES } from "@/constant";
 
@@ -11,6 +11,8 @@ export default function useIsLogin() {
   const { setIsLoggedIn, clearUser } = useAuthStore();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const location = useLocation();
+  const isPublicPage = location.pathname === "/" || location.pathname === "/login";
 
   const { mutate: refreshAuth } = useMutation({
     mutationFn: async (refreshToken: string) => await authApis.refresh(refreshToken),
@@ -27,6 +29,7 @@ export default function useIsLogin() {
   });
 
   useEffect(() => {
+    if (isPublicPage) return;
     const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
     const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
 
@@ -37,5 +40,5 @@ export default function useIsLogin() {
       clearUser();
       setIsLoggedIn(false);
     }
-  }, []);
+  }, [isPublicPage]);
 }
