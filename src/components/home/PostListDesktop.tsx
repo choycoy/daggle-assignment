@@ -18,6 +18,7 @@ export default function PostListDesktop() {
       </div>
       <div className="flex items-center justify-center gap-x-2 py-6">
         <button
+          type="button"
           disabled={currentPage === 1}
           onClick={() => setPageNum(currentPage - 1)}
           aria-label="이전 페이지로 이동"
@@ -28,6 +29,7 @@ export default function PostListDesktop() {
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
+            type="button"
             disabled={currentPage === i + 1}
             onClick={() => setPageNum(i + 1)}
             aria-label={`페이지 ${i + 1}로 이동`}
@@ -38,6 +40,7 @@ export default function PostListDesktop() {
           </button>
         ))}
         <button
+          type="button"
           disabled={currentPage === totalPages}
           onClick={() => setPageNum(currentPage + 1)}
           aria-label="다음 페이지로 이동"

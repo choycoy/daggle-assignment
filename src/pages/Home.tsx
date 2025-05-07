@@ -38,6 +38,7 @@ export default function Home() {
             게시판
           </p>
           <button
+            type="button"
             className="primary-btn tab:flex hidden h-12 w-[84px] cursor-pointer items-center justify-center rounded-lg leading-1.5 font-bold tracking-[-0.048px]"
             onClick={handleWritingClick}
           >

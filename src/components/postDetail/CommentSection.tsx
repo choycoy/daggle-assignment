@@ -28,10 +28,14 @@ export default function CommentSection({ postId }: { postId: string | undefined 
                     <p>{user.nickname ?? "익명"}</p>
                   </div>
                   <div className="text-gray-06 flex items-center gap-x-3">
-                    <button className="cursor-pointer" onClick={() => startEditing(comment)}>
+                    <button type="button" className="cursor-pointer" onClick={() => startEditing(comment)}>
                       수정
                     </button>
-                    <button className="cursor-pointer" onClick={() => deleteComment({ postId: postId, commentId: id })}>
+                    <button
+                      type="button"
+                      className="cursor-pointer"
+                      onClick={() => deleteComment({ postId: postId, commentId: id })}
+                    >
                       삭제
                     </button>
                   </div>
@@ -57,6 +61,7 @@ export default function CommentSection({ postId }: { postId: string | undefined 
         <button
           disabled={!input}
           onClick={onSubmit}
+          type="button"
           className="black-btn tab:h-[52px] tab:w-[89px] h-12 w-[84px] cursor-pointer rounded-lg leading-[24px] font-bold tracking-[-0.048px]"
         >
           {isEditing ? "수정" : "등록"}

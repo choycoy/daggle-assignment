@@ -38,12 +38,13 @@ export default function PostBody({ postId }: { postId: string | undefined }) {
             <PostInfo />
             <div className="text-gray-07 tab:leading-[24px] tab:tracking-[-0.048px] tab:text-base flex items-center gap-x-3 text-sm leading-[21px] tracking-[-0.042px]">
               <button
+                type="button"
                 className="cursor-pointer"
                 onClick={() => navigate("/post/write", { state: { isEdit: true, postId: postId } })}
               >
                 수정
               </button>
-              <button className="cursor-pointer" onClick={handleDelete}>
+              <button type="button" className="cursor-pointer" onClick={handleDelete}>
                 삭제
               </button>
             </div>

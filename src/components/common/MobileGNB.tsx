@@ -14,11 +14,11 @@ export default function MobileGNB() {
   return (
     <header className="fixed top-0 left-0 z-50 h-14 w-full bg-white py-4 pl-4">
       {isHome ? (
-        <button onClick={() => setShowDrawer(true)} aria-label="메뉴 열기">
+        <button type="button" onClick={() => setShowDrawer(true)} aria-label="메뉴 열기">
           <img src={menuIcon} alt="메뉴 아이콘" className="h-6 w-6" />
         </button>
       ) : (
-        <button onClick={() => handleBack(navigate)} aria-label="뒤로가기">
+        <button type="button" onClick={() => handleBack(navigate)} aria-label="뒤로가기">
           <img src={chevronLeft} alt="뒤로가기 아이콘" className="h-6 w-6" />
         </button>
       )}

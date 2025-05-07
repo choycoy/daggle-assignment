@@ -23,11 +23,17 @@ export default function DesktopGNB() {
         <img src={LogoImg} alt="다글제작소 로고" className="h-6 w-[120px]" />
       </Link>
       {isLoggedIn ? (
-        <button onClick={() => setShowNickname(!showNickname)} aria-label="프로필 보기" className="cursor-pointer">
+        <button
+          type="button"
+          onClick={() => setShowNickname(!showNickname)}
+          aria-label="프로필 보기"
+          className="cursor-pointer"
+        >
           <img src={profileIcon} alt="프로필 아이콘" />
         </button>
       ) : (
         <button
+          type="button"
           className="cursor-pointer text-lg leading-[32px] font-semibold whitespace-nowrap"
           onClick={() => navigate("/login")}
         >

@@ -1,10 +1,9 @@
 import commentIcon from "@/assets/icons/comment-gray06.svg";
 import { Post } from "@/types/interface";
 import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function PostList({ postList }: { postList: Post[] | undefined }) {
-  const navigate = useNavigate();
   if (!postList) return null;
 
   return (
@@ -12,9 +11,9 @@ export default function PostList({ postList }: { postList: Post[] | undefined })
       {postList.map((post: Post) => {
         const { id, createdAt, title, commentCount } = post;
         return (
-          <button
+          <Link
             key={id}
-            onClick={() => navigate(`post/${id}`)}
+            to={`post/${id}`}
             className="border-gray-03 tab:px-6 tab:flex-row tab:items-center tab:justify-between tab:text-center tab:gap-y-0 flex w-full cursor-pointer flex-col gap-y-3 border-b py-4 text-left"
           >
             <p className="tab:font-normal tab:text-lg tab:leading-[27px] tab:tracking-[-0.054px] line-clamp-1 text-base leading-[24px] font-semibold tracking-[-0.048px]">
@@ -33,7 +32,7 @@ export default function PostList({ postList }: { postList: Post[] | undefined })
                 <p className="tab:hidden text-black">익명</p>
               </div>
             </div>
-          </button>
+          </Link>
         );
       })}
     </>
