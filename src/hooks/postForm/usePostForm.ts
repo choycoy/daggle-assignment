@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useCreatePost from "@/hooks/postForm/useCreatePost";
-import { ACCESS_TOKEN_KEY, ERROR_MESSAGES } from "@/constant";
+import { ERROR_MESSAGES } from "@/constant";
 import { useMediaQuery } from "@react-hook/media-query";
 import useEditPost from "./useEditPost";
 import useGetPost from "../postDetail/post/useGetPost";
@@ -9,14 +9,13 @@ import useGetPost from "../postDetail/post/useGetPost";
 export default function usePostForm() {
   const location = useLocation();
   const state = location.state as { postId?: number; isEdit?: boolean };
-  const { postId, isEdit } = state || {};
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const { postId, isEdit = false } = state || {};
   const [inputs, setInputs] = useState({ title: "", content: "" });
   const [error, setError] = useState({ titleMsg: "", contentMsg: "" });
   const { title, content } = inputs;
-  const { createPost } = useCreatePost(title, content, accessToken);
-  const { editPost } = useEditPost(String(postId), title, content, accessToken);
-  const { postInfo } = useGetPost(String(postId), accessToken, isEdit);
+  const { createPost } = useCreatePost(title, content);
+  const { editPost } = useEditPost(String(postId), title, content);
+  const { postInfo } = useGetPost(String(postId), isEdit);
 
   useEffect(() => {
     if (isEdit && postInfo) {

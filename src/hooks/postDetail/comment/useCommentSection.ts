@@ -3,7 +3,7 @@ import { useState } from "react";
 import usePostComment from "@/hooks/postDetail/comment/usePostComment";
 import { Comment } from "@/types/interface";
 
-export default function useCommentSection(postId: string | undefined, accessToken: string | null) {
+export default function useCommentSection(postId: string | undefined) {
   const [input, setInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [editCommentId, setEditCommentId] = useState<string | null>(null);
@@ -28,14 +28,12 @@ export default function useCommentSection(postId: string | undefined, accessToke
     if (isEditing && editCommentId) {
       editComment({
         postId,
-        accessToken,
         commentId: editCommentId,
         content: input,
       });
     } else {
       postComment({
         postId,
-        accessToken,
         content: input,
       });
     }

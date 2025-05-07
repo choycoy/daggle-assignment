@@ -5,8 +5,8 @@ import { ERROR_MESSAGES } from "@/constant";
 import useDeletePost from "@/hooks/postDetail/post/useDeletePost";
 import { useNavigate } from "react-router-dom";
 
-export default function PostBody({ postId, accessToken }: { postId: string | undefined; accessToken: string | null }) {
-  const { postInfo, isPostLoading } = useGetPost(postId, accessToken, false);
+export default function PostBody({ postId }: { postId: string | undefined }) {
+  const { postInfo, isPostLoading } = useGetPost(postId, true);
   const { deletePost } = useDeletePost(postId);
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function PostBody({ postId, accessToken }: { postId: string | und
     <div
       className={`text-gray-06 tab:text-base tab:leading-[24px] tab:tracking-[-0.048px] flex items-center gap-x-3 text-sm leading-[21px] tracking-[-0.042px] ${!isAuthor ? "tab:my-6 mt-2 mb-4" : ""}`}
     >
-      <p>{author.nickname}</p>
+      <p>{author.nickname ?? "익명"}</p>
       <span className="bg-gray-03 h-5 w-0.5" />
       <p>{dayjs(author.createdAt).format("YYYY.MM.DD")}</p>
     </div>
@@ -38,12 +38,13 @@ export default function PostBody({ postId, accessToken }: { postId: string | und
             <PostInfo />
             <div className="text-gray-07 tab:leading-[24px] tab:tracking-[-0.048px] tab:text-base flex items-center gap-x-3 text-sm leading-[21px] tracking-[-0.042px]">
               <button
+                type="button"
                 className="cursor-pointer"
                 onClick={() => navigate("/post/write", { state: { isEdit: true, postId: postId } })}
               >
                 수정
               </button>
-              <button className="cursor-pointer" onClick={handleDelete}>
+              <button type="button" className="cursor-pointer" onClick={handleDelete}>
                 삭제
               </button>
             </div>

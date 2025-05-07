@@ -4,6 +4,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import PostListMobile from "@/components/home/PostListMobile";
 import PostListDesktop from "@/components/home/PostListDesktop";
+import { ERROR_MESSAGES } from "@/constant";
 
 export default function Home() {
   const { isLoggedIn } = useAuthStore();
@@ -12,7 +13,7 @@ export default function Home() {
   const handleWritingClick = () => {
     if (isLoggedIn) navigate("/post/write");
     else {
-      alert("로그인이 필요합니다.");
+      alert(ERROR_MESSAGES.loginRequired);
       navigate("/login");
     }
   };
@@ -37,6 +38,7 @@ export default function Home() {
             게시판
           </p>
           <button
+            type="button"
             className="primary-btn tab:flex hidden h-12 w-[84px] cursor-pointer items-center justify-center rounded-lg leading-1.5 font-bold tracking-[-0.048px]"
             onClick={handleWritingClick}
           >

@@ -1,23 +1,14 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import commentApis from "@/api/commentApis";
 import { QUERY_KEYS, ERROR_MESSAGES } from "@/constant";
-import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 export default function useDeleteComment() {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: async ({
-      postId,
-      accessToken,
-      commentId,
-    }: {
-      postId: string | undefined;
-      accessToken: string | null;
-      commentId: string;
-    }) => {
-      const response = await commentApis.deleteComment(postId, accessToken, commentId);
+    mutationFn: async ({ postId, commentId }: { postId: string | undefined; commentId: string }) => {
+      const response = await commentApis.deleteComment(postId, commentId);
       return response;
     },
     onSuccess: () => {

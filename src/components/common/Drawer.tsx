@@ -29,7 +29,7 @@ export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boole
   return (
     <section className={`fixed top-0 left-0 z-[51] h-full w-full bg-black/70`}>
       <div className="fixed top-0 left-0 z-[52] flex h-full w-[280px] flex-col gap-y-6 bg-white px-4 pt-8">
-        <button className="cursor-pointer self-end" onClick={() => setShowDrawer(false)}>
+        <button type="button" className="cursor-pointer self-end" onClick={() => setShowDrawer(false)}>
           <img alt="메뉴 닫기 아이콘" className="h-10 w-10" src={closeIcon} />
         </button>
         {isLoggedIn ? (
@@ -55,7 +55,9 @@ export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boole
             return (
               <li key={id} className="leading-[24px] tracking-[-0.048px]">
                 {index === 0 && isLoggedIn ? (
-                  <button onClick={handleLogout}>로그아웃</button>
+                  <button type="button" onClick={handleLogout}>
+                    로그아웃
+                  </button>
                 ) : (
                   <Link to={path} onClick={(e) => handleClick(e, id)}>
                     {item}

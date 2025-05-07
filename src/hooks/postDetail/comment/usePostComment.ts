@@ -1,21 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import commentApis from "@/api/commentApis";
 import { QUERY_KEYS } from "@/constant";
-import { useQueryClient } from "@tanstack/react-query";
 
 export default function usePostComment() {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: async ({
-      postId,
-      accessToken,
-      content,
-    }: {
-      postId: string | undefined;
-      accessToken: string | null;
-      content: string;
-    }) => {
-      const response = await commentApis.postComment(postId, accessToken, content);
+    mutationFn: async ({ postId, content }: { postId: string | undefined; content: string }) => {
+      const response = await commentApis.postComment(postId, content);
       return response;
     },
     onSuccess: () => {
