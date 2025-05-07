@@ -9,7 +9,7 @@ import useGetPost from "../postDetail/post/useGetPost";
 export default function usePostForm() {
   const location = useLocation();
   const state = location.state as { postId?: number; isEdit?: boolean };
-  const { postId, isEdit } = state || {};
+  const { postId, isEdit = false } = state || {};
   const [inputs, setInputs] = useState({ title: "", content: "" });
   const [error, setError] = useState({ titleMsg: "", contentMsg: "" });
   const { title, content } = inputs;
