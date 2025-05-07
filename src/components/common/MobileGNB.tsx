@@ -3,6 +3,7 @@ import { useState } from "react";
 import Drawer from "./Drawer";
 import { useLocation, useNavigate } from "react-router-dom";
 import chevronLeft from "@/assets/icons/chevron-left-gray09.svg";
+import { handleBack } from "@/handlers/commonHandlers";
 
 export default function MobileGNB() {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -17,7 +18,7 @@ export default function MobileGNB() {
           <img src={menuIcon} alt="메뉴 아이콘" className="h-6 w-6" />
         </button>
       ) : (
-        <button onClick={() => navigate(-1)} aria-label="뒤로가기">
+        <button onClick={() => handleBack(navigate)} aria-label="뒤로가기">
           <img src={chevronLeft} alt="뒤로가기 아이콘" className="h-6 w-6" />
         </button>
       )}
