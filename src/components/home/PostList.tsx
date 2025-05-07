@@ -30,7 +30,7 @@ export default function PostList({ postList }: { postList: Post[] | undefined })
               </div>
               <div className="flex items-center gap-x-2">
                 <div className="tab:bg-gray-06 bg-gray-04 h-6 w-6 rounded-full" />
-                <p className="tab:hidden text-black">멋진무지개12</p>
+                <p className="tab:hidden text-black">익명</p>
               </div>
             </div>
           </button>
