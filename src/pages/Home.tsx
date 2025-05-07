@@ -4,6 +4,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import PostListMobile from "@/components/home/PostListMobile";
 import PostListDesktop from "@/components/home/PostListDesktop";
+import { ERROR_MESSAGES } from "@/constant";
 
 export default function Home() {
   const { isLoggedIn } = useAuthStore();
@@ -12,7 +13,7 @@ export default function Home() {
   const handleWritingClick = () => {
     if (isLoggedIn) navigate("/post/write");
     else {
-      alert("로그인이 필요합니다.");
+      alert(ERROR_MESSAGES.loginRequired);
       navigate("/login");
     }
   };
