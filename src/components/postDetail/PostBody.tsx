@@ -5,8 +5,8 @@ import { ERROR_MESSAGES } from "@/constant";
 import useDeletePost from "@/hooks/postDetail/post/useDeletePost";
 import { useNavigate } from "react-router-dom";
 
-export default function PostBody({ postId, accessToken }: { postId: string | undefined; accessToken: string | null }) {
-  const { postInfo, isPostLoading } = useGetPost(postId, accessToken, false);
+export default function PostBody({ postId }: { postId: string | undefined }) {
+  const { postInfo, isPostLoading } = useGetPost(postId, false);
   const { deletePost } = useDeletePost(postId);
   const navigate = useNavigate();
 

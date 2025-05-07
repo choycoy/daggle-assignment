@@ -3,11 +3,11 @@ import postApis from "@/api/postApis";
 import { useNavigate } from "react-router-dom";
 import { QUERY_KEYS } from "@/constant";
 
-export default function useCreatePost(title: string, content: string, accessToken: string | null) {
+export default function useCreatePost(title: string, content: string) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const mutation = useMutation({
-    mutationFn: () => postApis.createPost(title, content, accessToken),
+    mutationFn: () => postApis.createPost(title, content),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getPosts] });
       navigate("/");

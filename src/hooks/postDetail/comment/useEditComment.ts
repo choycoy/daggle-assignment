@@ -1,7 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import commentApis from "@/api/commentApis";
 import { QUERY_KEYS, ERROR_MESSAGES } from "@/constant";
-import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 export default function useEditComment() {
@@ -9,16 +8,14 @@ export default function useEditComment() {
   const mutation = useMutation({
     mutationFn: async ({
       postId,
-      accessToken,
       commentId,
       content,
     }: {
       postId: string | undefined;
-      accessToken: string | null;
       commentId: string;
       content: string;
     }) => {
-      const response = await commentApis.editComment(postId, accessToken, commentId, content);
+      const response = await commentApis.editComment(postId, commentId, content);
       return response;
     },
     onSuccess: () => {

@@ -4,15 +4,9 @@ import useCommentSection from "@/hooks/postDetail/comment/useCommentSection";
 import useDeleteComment from "@/hooks/postDetail/comment/useDeleteComment";
 import useGetComments from "@/hooks/postDetail/comment/useGetComments";
 
-export default function CommentSection({
-  accessToken,
-  postId,
-}: {
-  accessToken: string | null;
-  postId: string | undefined;
-}) {
-  const { comments, isCommentsLoading } = useGetComments(postId, accessToken);
-  const { input, setInput, startEditing, isEditing, onEnterSubmit, onSubmit } = useCommentSection(postId, accessToken);
+export default function CommentSection({ postId }: { postId: string | undefined }) {
+  const { comments, isCommentsLoading } = useGetComments(postId);
+  const { input, setInput, startEditing, isEditing, onEnterSubmit, onSubmit } = useCommentSection(postId);
   const { deleteComment } = useDeleteComment();
   if (!comments || isCommentsLoading) return null;
 
@@ -37,10 +31,7 @@ export default function CommentSection({
                     <button className="cursor-pointer" onClick={() => startEditing(comment)}>
                       수정
                     </button>
-                    <button
-                      className="cursor-pointer"
-                      onClick={() => deleteComment({ postId: postId, accessToken: accessToken, commentId: id })}
-                    >
+                    <button className="cursor-pointer" onClick={() => deleteComment({ postId: postId, commentId: id })}>
                       삭제
                     </button>
                   </div>
