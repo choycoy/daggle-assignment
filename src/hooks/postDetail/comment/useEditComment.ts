@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import commentApis from "@/api/commentApis";
-import { QUERY_KEYS, UI_ERRORS } from "@/constant";
-import { AxiosError } from "axios";
+import { QUERY_KEYS } from "@/constant";
 
 export default function useEditComment(postId: string | undefined) {
   const queryClient = useQueryClient();
@@ -12,13 +11,6 @@ export default function useEditComment(postId: string | undefined) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_COMMENTS] });
-    },
-    onError: (error: AxiosError) => {
-      if (error?.response?.status === 403) {
-        alert(UI_ERRORS.EDIT_FORBIDDEN_MSG);
-      } else {
-        alert("댓글 수정에 실패했습니다. 다시 시도해주세요.");
-      }
     },
   });
   return { editComment: mutation.mutate };

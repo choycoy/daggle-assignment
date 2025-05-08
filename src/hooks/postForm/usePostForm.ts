@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useCreatePost from "@/hooks/postForm/useCreatePost";
 import { UI_ERRORS } from "@/constant";
-import { useMediaQuery } from "@react-hook/media-query";
+import { useMediaQueryStore } from "@/store/useMediaQueryStore";
 import useEditPost from "./useEditPost";
 import useGetPost from "../postDetail/post/useGetPost";
 
@@ -34,7 +34,7 @@ export default function usePostForm() {
     if (isEdit && postId) editPost();
     else createPost();
   };
-  const isMobile = useMediaQuery("(max-width: 641px)");
+  const { isMobile } = useMediaQueryStore();
   const isBtnDisabled = isEdit && postInfo?.title === title && postInfo?.content === content;
 
   return { isMobile, handleSubmit, title, content, setInputs, titleMsg, contentMsg, setError, isEdit, isBtnDisabled };
