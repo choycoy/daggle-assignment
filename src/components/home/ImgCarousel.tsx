@@ -1,17 +1,14 @@
-import img1 from "@/assets/imgs/carousel1.png";
-import img2 from "@/assets/imgs/carousel2.png";
-import img3 from "@/assets/imgs/carousel3.png";
-import img4 from "@/assets/imgs/carousel4.png";
-import dummyData from "@/mocks/dummyData";
+import { CAROUSEL_DATA } from "@/constant";
+import useImgCarousel from "@/hooks/home/useImgCarousel";
 
 export default function ImgCarousel() {
-  const images = [img1, img2, img3, img4];
+  const { sliderRef, totalImages } = useImgCarousel();
 
   return (
     <div className="relative h-[391px] w-full overflow-hidden">
-      <div className="animate-slide flex w-max">
-        {[...images, ...images].map((src, index) => {
-          const { title, description, subtitle } = dummyData[index % dummyData.length];
+      <div ref={sliderRef} className="flex w-max">
+        {totalImages.map((src, index) => {
+          const { title, description, subtitle } = CAROUSEL_DATA[index % CAROUSEL_DATA.length];
           return (
             <div key={index} className="relative mr-5 h-[391px] w-[319px] shrink-0 cursor-pointer">
               <img src={src} alt={title} className="h-full w-full rounded-[20px]" fetchPriority="high" />

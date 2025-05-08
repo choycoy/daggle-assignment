@@ -32,3 +32,30 @@ export const API_ERRORS = {
   INVALID_OR_EXPIRED_TOKEN: "Invalid or Expired Token",
   LOGIN_REQUIRED: "Login Required",
 };
+
+export const CAROUSEL_DATA = [
+  {
+    id: 0,
+    title: "프린티",
+    subtitle: "주식회사 프린티",
+    description: "작가와 팬을 잇는 일러스트 출력 플랫폼",
+  },
+  {
+    id: 1,
+    title: "G-Alpha",
+    subtitle: "(주)씨에이허브",
+    description: "물류 관계자 비교견적 솔루션",
+  },
+  {
+    id: 2,
+    title: "KOSTA-EDU",
+    subtitle: "한국소프트웨어 기술진흥협회",
+    description: "학습관리 시스템",
+  },
+  {
+    id: 3,
+    title: "달콤 수학",
+    subtitle: "달콤 교육",
+    description: "엄마표 온라인 수학교육 강의 플랫폼",
+  },
+];
