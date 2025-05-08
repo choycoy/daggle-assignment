@@ -1,6 +1,6 @@
 import DesktopGNB from "./DesktopGNB";
 import { ReactNode } from "react";
-import { useMediaQuery } from "@react-hook/media-query";
+import { useMediaQuery } from "@/hooks/common/useMediaQuery";
 import MobileGNB from "./MobileGNB";
 import useAuthErrorHandler from "@/hooks/common/useAuthErrorHandler";
 import { useLocation } from "react-router-dom";
@@ -8,7 +8,7 @@ import useAuthInit from "@/hooks/common/useAuthInit";
 import { useEffect } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const isMobile = useMediaQuery("(max-width: 641px)");
+  const isMobile = useMediaQuery();
   const location = useLocation();
   useAuthInit();
   useAuthErrorHandler();

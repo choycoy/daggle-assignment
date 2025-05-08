@@ -1,5 +1,5 @@
 import ImgCarousel from "@/components/home/ImgCarousel";
-import { useMediaQuery } from "@react-hook/media-query";
+import { useMediaQueryStore } from "@/store/useMediaQueryStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import PostListMobile from "@/components/home/PostListMobile";
@@ -9,7 +9,7 @@ import { UI_ERRORS } from "@/constant";
 export default function Home() {
   const { isLoggedIn } = useAuthStore();
   const navigate = useNavigate();
-  const isMobile = useMediaQuery("(max-width: 641px)");
+  const { isMobile } = useMediaQueryStore();
   const handleWritingClick = () => {
     if (isLoggedIn) navigate("/post/write");
     else {
