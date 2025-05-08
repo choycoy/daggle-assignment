@@ -5,12 +5,16 @@ import MobileGNB from "./MobileGNB";
 import useAuthErrorHandler from "@/hooks/common/useAuthErrorHandler";
 import { useLocation } from "react-router-dom";
 import useAuthInit from "@/hooks/common/useAuthInit";
+import { useEffect } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const isMobile = useMediaQuery("(max-width: 641px)");
   const location = useLocation();
   useAuthInit();
   useAuthErrorHandler();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const isPostForm = location.pathname === "/post/write";
 
