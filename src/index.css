@@ -82,16 +82,10 @@
   }
 
   .animate-slide {
-    animation: slide 25s linear infinite;
+    animation: slide 20s linear infinite;
   }
 }
 
 .animate-slide:hover {
   animation-play-state: paused;
-}
-
-@media (min-width: 642px) {
-  .animate-slide {
-    animation-duration: 20s;
-  }
 }
