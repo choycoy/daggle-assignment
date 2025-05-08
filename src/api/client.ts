@@ -21,22 +21,31 @@ client.interceptors.response.use(
     const status = error.response?.status;
     const message = error.response?.data?.message;
 
-    if (status === 401 && !isAuthErrorHandled) {
-      if (message === API_ERRORS.INVALID_OR_EXPIRED_TOKEN) {
+    if (!isAuthErrorHandled) {
+      const isTokenErr = status === 401 && message === API_ERRORS.INVALID_OR_EXPIRED_TOKEN;
+      const isReLogin =
+        (status === 401 && message === API_ERRORS.LOGIN_REQUIRED) ||
+        (status === 404 && message === API_ERRORS.REFRESH_TOKEN_NOT_FOUND);
+
+      if (isTokenErr) {
         isAuthErrorHandled = true;
         const event = new CustomEvent("authError", { detail: error });
         window.dispatchEvent(event);
-      } else if (message === API_ERRORS.LOGIN_REQUIRED) {
+      }
+
+      if (isReLogin) {
         isAuthErrorHandled = true;
         localStorage.clear();
         alert(UI_ERRORS.LOGIN_REQUIRED);
-        const currentPath = window.location.pathname;
-        window.location.href = `/login?from=${encodeURIComponent(currentPath)}`;
+        const from = window.location.pathname;
+        window.location.href = `/login?from=${encodeURIComponent(from)}`;
       }
 
-      setTimeout(() => {
-        isAuthErrorHandled = false;
-      }, 3000);
+      if (isTokenErr || isReLogin) {
+        setTimeout(() => {
+          isAuthErrorHandled = false;
+        }, 3000);
+      }
     }
 
     return Promise.reject(error);

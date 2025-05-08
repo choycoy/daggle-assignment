@@ -31,6 +31,7 @@ export const UI_ERRORS = {
 export const API_ERRORS = {
   INVALID_OR_EXPIRED_TOKEN: "Invalid or Expired Token",
   LOGIN_REQUIRED: "Login Required",
+  REFRESH_TOKEN_NOT_FOUND: "refresh-token-not-found",
 };
 
 export const CAROUSEL_DATA = [
