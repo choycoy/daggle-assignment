@@ -70,24 +70,3 @@
     @apply hover:bg-gray-08 active:bg-gray-07 bg-black text-white transition-colors;
   }
 }
-
-@layer utilities {
-  @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-slide {
-    animation: slide 20s linear infinite;
-  }
-}
-
-@media (hover: hover) {
-  .animate-slide:hover {
-    animation-play-state: paused;
-  }
-}
