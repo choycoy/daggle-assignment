@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import useDisableScroll from "@/hooks/common/useDisableScroll";
 import useLogout from "@/hooks/auth/useLogout";
-import { ERROR_MESSAGES } from "@/constant";
+import { UI_ERRORS } from "@/constant";
 
 export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boolean) => void }) {
   const { user, isLoggedIn } = useAuthStore();
@@ -19,7 +19,7 @@ export default function Drawer({ setShowDrawer }: { setShowDrawer: (value: boole
     setShowDrawer(false);
   };
   const handleLogout = () => {
-    const confirmed = window.confirm(ERROR_MESSAGES.logout);
+    const confirmed = window.confirm(UI_ERRORS.LOGOUT);
     if (confirmed) {
       logout();
       setShowDrawer(false);

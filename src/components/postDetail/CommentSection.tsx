@@ -3,13 +3,13 @@ import { Comment } from "@/types/interface";
 import useCommentSection from "@/hooks/postDetail/comment/useCommentSection";
 import useDeleteComment from "@/hooks/postDetail/comment/useDeleteComment";
 import useGetComments from "@/hooks/postDetail/comment/useGetComments";
-import { USER_ID } from "@/constant";
+import { STORAGE_KEYS } from "@/constant";
 
 export default function CommentSection({ postId }: { postId: string | undefined }) {
   const { comments, isCommentsLoading } = useGetComments(postId);
   const { input, setInput, startEditing, isEditing, onEnterSubmit, onSubmit } = useCommentSection(postId);
   const { deleteComment } = useDeleteComment();
-  const userId = localStorage.getItem(USER_ID);
+  const userId = localStorage.getItem(STORAGE_KEYS.USER_ID_KEY);
 
   if (!comments || isCommentsLoading) return null;
 

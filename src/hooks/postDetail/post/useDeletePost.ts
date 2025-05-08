@@ -9,7 +9,7 @@ export default function useDeletePost(postId: string | undefined) {
   const mutation = useMutation({
     mutationFn: () => postApis.deletePost(postId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getPosts] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] });
       navigate("/");
     },
   });

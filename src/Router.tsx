@@ -7,22 +7,19 @@ const Home = lazy(() => import("@/pages/Home"));
 const Login = lazy(() => import("@/pages/Login"));
 const PostDetail = lazy(() => import("@/pages/PostDetail"));
 const PostForm = lazy(() => import("@/pages/PostForm"));
+
 const Router = () => {
   return (
     <Layout>
       <Suspense fallback={<div />}>
         <Routes>
           <Route index path="/" element={<Home />} />
-          <Route
-            path="/login"
-            element={
-              <PrivateRoute>
-                <Login />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/post/:id" element={<PostDetail />} />
-          <Route path="/post/write" element={<PostForm />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/post/write" element={<PostForm />} />
+          </Route>
         </Routes>
       </Suspense>
     </Layout>

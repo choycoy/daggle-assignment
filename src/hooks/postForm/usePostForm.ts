@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useCreatePost from "@/hooks/postForm/useCreatePost";
-import { ERROR_MESSAGES } from "@/constant";
+import { UI_ERRORS } from "@/constant";
 import { useMediaQuery } from "@react-hook/media-query";
 import useEditPost from "./useEditPost";
 import useGetPost from "../postDetail/post/useGetPost";
@@ -26,8 +26,8 @@ export default function usePostForm() {
   const { titleMsg, contentMsg } = error;
 
   const handleSubmit = () => {
-    if (title.length < 1) setError((prev) => ({ ...prev, titleMsg: ERROR_MESSAGES.titleLengthError }));
-    if (content.length < 5) setError((prev) => ({ ...prev, contentMsg: ERROR_MESSAGES.contentLengthError }));
+    if (title.length < 1) setError((prev) => ({ ...prev, titleMsg: UI_ERRORS.TITLE_LENGTH_ERROR }));
+    if (content.length < 5) setError((prev) => ({ ...prev, contentMsg: UI_ERRORS.CONTENT_LENGTH_ERROR }));
     const isValid = title.length >= 1 && content.length >= 5;
 
     if (!isValid) return;

@@ -1,11 +1,9 @@
 import CommentSection from "@/components/postDetail/CommentSection";
 import PostBody from "@/components/postDetail/PostBody";
 import { useParams } from "react-router-dom";
-import useAuthRedirect from "@/hooks/common/useAuthRedirect";
 
 export default function PostDetail() {
   const { id } = useParams();
-  useAuthRedirect();
   const postId = id;
 
   if (!postId) return null;

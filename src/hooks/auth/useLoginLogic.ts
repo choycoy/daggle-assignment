@@ -1,6 +1,6 @@
 import useLogin from "@/hooks/auth/useLogin";
 import { useState } from "react";
-import { ERROR_MESSAGES } from "@/constant";
+import { UI_ERRORS } from "@/constant";
 
 export default function useLoginLogic() {
   const [input, setInput] = useState({ id: "", pwd: "" });
@@ -11,8 +11,8 @@ export default function useLoginLogic() {
   const { login } = useLogin(id, pwd);
 
   const handleLogin = () => {
-    if (!id) setError((prev) => ({ ...prev, idMsg: ERROR_MESSAGES.idRequired }));
-    if (!pwd) setError((prev) => ({ ...prev, pwdMsg: ERROR_MESSAGES.pwdRequired }));
+    if (!id) setError((prev) => ({ ...prev, idMsg: UI_ERRORS.ID_REQUIRED }));
+    if (!pwd) setError((prev) => ({ ...prev, pwdMsg: UI_ERRORS.PWD_REQUIRED }));
     if (id && pwd) login();
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

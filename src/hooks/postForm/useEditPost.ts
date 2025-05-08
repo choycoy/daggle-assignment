@@ -9,8 +9,8 @@ export default function useEditPost(postId: string | undefined, title: string, c
   const mutation = useMutation({
     mutationFn: () => postApis.modifyPost(postId, title, content),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getPost, postId] });
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getPosts] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POST, postId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] });
       navigate("/");
     },
   });
