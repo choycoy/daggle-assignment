@@ -23,7 +23,6 @@ export default function PostBody({ postId }: { postId: string | undefined }) {
     </div>
   );
   const handleDelete = () => {
-    window.location.reload();
     const confirmed = window.confirm(UI_ERRORS.DELETE_POST);
     if (confirmed) deletePost();
   };
