@@ -86,6 +86,8 @@
   }
 }
 
-.animate-slide:hover {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .animate-slide:hover {
+    animation-play-state: paused;
+  }
 }
