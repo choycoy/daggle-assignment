@@ -18,7 +18,7 @@ export default function DesktopGNB() {
   };
 
   return (
-    <header className="shadow-header border-gray-03 fixed top-0 left-0 z-50 h-[86px] w-full border-b bg-white px-[120px]">
+    <header className="shadow-header border-gray-03 desktop:px-[120px] fixed top-0 left-0 z-50 h-[86px] w-full border-b bg-white px-[30px]">
       <div className="desktop:mx-auto flex h-full max-w-[1200px] items-center justify-between">
         <Link to="/" onClick={handleLogoClick}>
           <img src={LogoImg} alt="다글제작소 로고" className="h-6 w-[120px]" />
@@ -42,7 +42,7 @@ export default function DesktopGNB() {
           </button>
         )}
         {showNickname && (
-          <div className="shadow-nickname fixed top-[105px] right-[120px] flex items-center gap-x-3 rounded-xl bg-white px-6 py-5">
+          <div className="shadow-nickname desktop:right-[120px] fixed top-[105px] right-[30px] flex items-center gap-x-3 rounded-xl bg-white px-6 py-5">
             {user?.profileImageUrl ? (
               <img
                 src={user.profileImageUrl}
