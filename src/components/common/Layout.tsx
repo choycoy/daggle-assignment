@@ -2,14 +2,17 @@ import DesktopGNB from "./DesktopGNB";
 import { ReactNode } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import MobileGNB from "./MobileGNB";
-import useIsLogin from "@/hooks/auth/useIsLogin";
+import useAuthErrorHandler from "@/hooks/common/useAuthErrorHandler";
 import { useLocation } from "react-router-dom";
+import useAuthInit from "@/hooks/common/useAuthInit";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const isMobile = useMediaQuery("(max-width: 641px)");
   const location = useLocation();
+  useAuthInit();
+  useAuthErrorHandler();
+
   const isPostForm = location.pathname === "/post/write";
-  useIsLogin();
 
   return (
     <div className="flex min-h-screen w-full flex-col">
