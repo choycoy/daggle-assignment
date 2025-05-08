@@ -21,7 +21,7 @@ export default function DesktopGNB() {
     <header className="shadow-header border-gray-03 desktop:px-[120px] fixed top-0 left-0 z-50 h-[86px] w-full border-b bg-white px-[30px]">
       <div className="desktop:mx-auto flex h-full max-w-[1200px] items-center justify-between">
         <Link to="/" onClick={handleLogoClick}>
-          <img src={LogoImg} alt="다글제작소 로고" className="h-6 w-[120px]" />
+          <img src={LogoImg} alt="다글제작소 로고" className="h-5 w-[100px]" />
         </Link>
         {isLoggedIn ? (
           <button
