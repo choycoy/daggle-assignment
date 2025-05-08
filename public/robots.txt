@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://daggle-assignment.vercel.app/sitemap.xml
