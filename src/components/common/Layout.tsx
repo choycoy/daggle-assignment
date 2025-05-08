@@ -1,25 +1,10 @@
 import DesktopGNB from "./DesktopGNB";
 import { ReactNode } from "react";
-import { useMediaQuery } from "@/hooks/common/useMediaQuery";
 import MobileGNB from "./MobileGNB";
-import useAuthErrorHandler from "@/hooks/common/useAuthErrorHandler";
-import { useLocation } from "react-router-dom";
-import useAuthInit from "@/hooks/common/useAuthInit";
-import { useEffect } from "react";
+import useLayout from "@/hooks/common/useLayout";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const isMobile = useMediaQuery();
-  const location = useLocation();
-  useAuthInit();
-  useAuthErrorHandler();
-  useEffect(() => {
-    const scrollY = window.scrollY;
-    if (scrollY !== 0) {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
-  }, [location]);
-
-  const isPostForm = location.pathname === "/post/write";
+  const { isMobile, isPostForm } = useLayout();
 
   return (
     <div className="tab:bg-gray-01 tab:items-center tab:justify-center flex min-h-screen w-full flex-col">
