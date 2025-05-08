@@ -13,7 +13,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   useAuthInit();
   useAuthErrorHandler();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const scrollY = window.scrollY;
+    if (scrollY !== 0) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
   }, [location]);
 
   const isPostForm = location.pathname === "/post/write";
