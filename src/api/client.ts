@@ -29,7 +29,7 @@ client.interceptors.response.use(
       } else if (message === API_ERRORS.LOGIN_REQUIRED) {
         isAuthErrorHandled = true;
         localStorage.clear();
-        alert(UI_ERRORS.loginRequired);
+        alert(UI_ERRORS.LOGIN_REQUIRED);
         const currentPath = window.location.pathname;
         window.location.href = `/login?from=${encodeURIComponent(currentPath)}`;
       }

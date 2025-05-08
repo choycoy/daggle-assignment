@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import commentIcon from "@/assets/icons/comment-gray08.svg";
 import useGetPost from "@/hooks/postDetail/post/useGetPost";
-import { ERROR_MESSAGES } from "@/constant";
+import { UI_ERRORS } from "@/constant";
 import useDeletePost from "@/hooks/postDetail/post/useDeletePost";
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +23,7 @@ export default function PostBody({ postId }: { postId: string | undefined }) {
     </div>
   );
   const handleDelete = () => {
-    const confirmed = window.confirm(ERROR_MESSAGES.deletePost);
+    const confirmed = window.confirm(UI_ERRORS.DELETE_POST);
     if (confirmed) deletePost();
   };
 

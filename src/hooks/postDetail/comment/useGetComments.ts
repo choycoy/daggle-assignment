@@ -6,7 +6,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 export default function useGetComments(postId: string | undefined) {
   const { isLoggedIn } = useAuthStore();
   const { data: comments, isLoading: isCommentsLoading } = useQuery({
-    queryKey: [QUERY_KEYS.getComments, postId],
+    queryKey: [QUERY_KEYS.GET_COMMENTS, postId],
     queryFn: () => commentApis.getComments(postId),
     enabled: !!postId && isLoggedIn,
   });

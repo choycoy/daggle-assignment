@@ -10,8 +10,8 @@ export default function usePostComment(postId: string | undefined) {
       return response;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getComments] });
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getPost, postId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_COMMENTS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POST, postId] });
     },
   });
   return { postComment: mutation.mutate };

@@ -9,7 +9,7 @@ export default function useCreatePost(title: string, content: string) {
   const mutation = useMutation({
     mutationFn: () => postApis.createPost(title, content),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.getPosts] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] });
       navigate("/");
     },
   });

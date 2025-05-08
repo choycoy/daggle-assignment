@@ -4,7 +4,7 @@ import { QUERY_KEYS } from "@/constant";
 
 export default function useGetPosts(pageNum: number, limit: number = 10) {
   const { data: posts, isLoading } = useQuery({
-    queryKey: [QUERY_KEYS.getPosts, pageNum],
+    queryKey: [QUERY_KEYS.GET_POSTS, pageNum],
     queryFn: () => postApis.getPosts(pageNum, limit),
     placeholderData: (prevData) => prevData,
   });
