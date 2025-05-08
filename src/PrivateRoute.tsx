@@ -9,7 +9,6 @@ export default function PrivateRoute() {
   const isLoginPage = location.pathname === "/login" && location.search === "";
   const cameFromOtherPage = location.state?.from || new URLSearchParams(location.search).get("from");
 
-  if (isLoggedIn === null) return;
   if (!isLoggedIn && !isLoginPage && !cameFromOtherPage) {
     alert(UI_ERRORS.LOGIN_REQUIRED);
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
