@@ -1,6 +1,6 @@
 import chevronLeft from "@/assets/icons/chevron-left-gray09.svg";
 import { useNavigate } from "react-router-dom";
-import { handleBack } from "@/handlers/commonHandlers";
+import { handleBack } from "@/utils/commonUtils";
 
 export default function GNBWithTitle({
   title,

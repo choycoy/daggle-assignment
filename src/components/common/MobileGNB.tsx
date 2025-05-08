@@ -3,7 +3,7 @@ import { useState } from "react";
 import Drawer from "./Drawer";
 import { useLocation, useNavigate } from "react-router-dom";
 import chevronLeft from "@/assets/icons/chevron-left-gray09.svg";
-import { handleBack } from "@/handlers/commonHandlers";
+import { handleBack } from "@/utils/commonUtils";
 
 export default function MobileGNB() {
   const [showDrawer, setShowDrawer] = useState(false);
