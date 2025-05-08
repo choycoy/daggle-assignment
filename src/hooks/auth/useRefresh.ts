@@ -21,9 +21,7 @@ export default function useRefresh() {
     onError: () => {
       if (!isPublicPage) {
         alert(UI_ERRORS.REFRESH_REQUIRED);
-        setTimeout(() => {
-          navigate("/login", { replace: true, state: { from: location.pathname } });
-        }, 100);
+        navigate("/login", { replace: true, state: { from: location.pathname } });
       }
       clearUser();
       setIsLoggedIn(false);
