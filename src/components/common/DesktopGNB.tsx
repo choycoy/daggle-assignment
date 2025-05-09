@@ -3,7 +3,7 @@ import profileIcon from "@/assets/icons/circle-user.svg";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import LogoImg from "@/assets/imgs/logo.png";
+import LogoImg from "../../../public/imgs/logo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function DesktopGNB() {
