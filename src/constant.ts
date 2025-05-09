@@ -8,10 +8,6 @@ export const API_ERRORS = {
   INVALID_OR_EXPIRED_TOKEN: "Invalid or Expired Token",
 };
 
-export const SESSION_KEYS = {
-  LOGIN_ALERT_SHOWN: "loginAlertShown",
-};
-
 export const QUERY_KEYS = {
   GET_POSTS: "getPosts",
   GET_INFINITE_POSTS: "getInfinitePosts",
