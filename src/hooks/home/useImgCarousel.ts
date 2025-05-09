@@ -8,6 +8,7 @@ export default function useImgCarousel() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const xRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
+  const isAnimating = useRef(true);
 
   const images = [img1, img2, img3, img4];
   const totalImages = [...images, ...images];
@@ -16,7 +17,7 @@ export default function useImgCarousel() {
     const slider = sliderRef.current;
 
     const animate = () => {
-      if (slider) {
+      if (slider && isAnimating.current) {
         xRef.current -= 1;
         if (Math.abs(xRef.current) >= (319 + 20) * images.length) {
           xRef.current = 0;
@@ -36,18 +37,40 @@ export default function useImgCarousel() {
     };
 
     const handleMouseLeave = () => {
-      if (!animationFrameRef.current) animate();
+      if (!animationFrameRef.current && isAnimating.current) animate();
     };
 
+    const handleClick = () => {
+      isAnimating.current = !isAnimating.current;
+      if (isAnimating.current) {
+        animate();
+      } else {
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+          animationFrameRef.current = null;
+        }
+      }
+    };
+
+    const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
     if (slider) {
-      slider.addEventListener("mouseenter", handleMouseEnter);
-      slider.addEventListener("mouseleave", handleMouseLeave);
+      if (isMobile) {
+        slider.addEventListener("click", handleClick);
+      } else {
+        slider.addEventListener("mouseenter", handleMouseEnter);
+        slider.addEventListener("mouseleave", handleMouseLeave);
+      }
     }
 
     return () => {
       if (slider) {
-        slider.removeEventListener("mouseenter", handleMouseEnter);
-        slider.removeEventListener("mouseleave", handleMouseLeave);
+        if (isMobile) {
+          slider.removeEventListener("click", handleClick);
+        } else {
+          slider.removeEventListener("mouseenter", handleMouseEnter);
+          slider.removeEventListener("mouseleave", handleMouseLeave);
+        }
       }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
