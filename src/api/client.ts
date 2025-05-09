@@ -34,11 +34,16 @@ client.interceptors.response.use(
       }
 
       if (isReLogin) {
-        isAuthErrorHandled = true;
-        localStorage.clear();
-        alert(UI_ERRORS.LOGIN_REQUIRED);
-        const from = window.location.pathname;
-        window.location.href = `/login?from=${encodeURIComponent(from)}`;
+        const currentPath = window.location.pathname;
+        const isAuthPage = currentPath === "/" || currentPath === "/login";
+
+        if (!isAuthPage) {
+          isAuthErrorHandled = true;
+          localStorage.clear();
+          alert(UI_ERRORS.LOGIN_REQUIRED);
+          const from = currentPath;
+          window.location.href = `/login?from=${encodeURIComponent(from)}`;
+        }
       }
 
       if (isTokenErr || isReLogin) {
