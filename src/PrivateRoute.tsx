@@ -7,13 +7,15 @@ export default function PrivateRoute() {
   const { isLoggedIn } = useAuthStore();
   const location = useLocation();
   const isLoginPage = location.pathname === "/login" && location.search === "";
-  const cameFromOtherPage = location.state?.from || new URLSearchParams(location.search).get("from");
+  const isHomePage = location.pathname === "/";
+  const isPublicPage = isLoginPage || isHomePage;
+  const isRedirected = location.state?.from || new URLSearchParams(location.search).get("from");
 
-  if (!isLoggedIn && !isLoginPage && !cameFromOtherPage) {
+  if (!isLoggedIn && !isPublicPage && !isRedirected) {
     alert(UI_ERRORS.LOGIN_REQUIRED);
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
   }
-  if (isLoggedIn && isLoginPage && !cameFromOtherPage) return <Navigate to="/" replace />;
+  if (isLoggedIn && isLoginPage && !isRedirected) return <Navigate to="/" replace />;
 
   return <Outlet />;
 }

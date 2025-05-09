@@ -1,5 +1,5 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
-import { STORAGE_KEYS, UI_ERRORS, API_ERRORS } from "@/constant";
+import { STORAGE_KEYS, API_ERRORS } from "@/constant";
 
 const client = axios.create({
   baseURL: import.meta.env.VITE_API_SERVER_URL,
@@ -13,44 +13,17 @@ client.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   return config;
 });
 
-let isAuthErrorHandled = false;
-
 client.interceptors.response.use(
   (res) => res,
   (error) => {
     const status = error.response?.status;
     const message = error.response?.data?.message;
 
-    if (!isAuthErrorHandled) {
-      const isTokenErr = status === 401 && message === API_ERRORS.INVALID_OR_EXPIRED_TOKEN;
-      const isReLogin =
-        (status === 401 && message === API_ERRORS.LOGIN_REQUIRED) ||
-        (status === 404 && message === API_ERRORS.REFRESH_TOKEN_NOT_FOUND);
+    const isTokenErr = status === 401 && message === API_ERRORS.INVALID_OR_EXPIRED_TOKEN;
 
-      if (isTokenErr) {
-        isAuthErrorHandled = true;
-        const event = new CustomEvent("authError", { detail: error });
-        window.dispatchEvent(event);
-      }
-
-      if (isReLogin) {
-        const currentPath = window.location.pathname;
-        const isAuthPage = currentPath === "/" || currentPath === "/login";
-
-        if (!isAuthPage) {
-          isAuthErrorHandled = true;
-          localStorage.clear();
-          alert(UI_ERRORS.LOGIN_REQUIRED);
-          const from = currentPath;
-          window.location.href = `/login?from=${encodeURIComponent(from)}`;
-        }
-      }
-
-      if (isTokenErr || isReLogin) {
-        setTimeout(() => {
-          isAuthErrorHandled = false;
-        }, 3000);
-      }
+    if (isTokenErr) {
+      const event = new CustomEvent("authError", { detail: error });
+      window.dispatchEvent(event);
     }
 
     return Promise.reject(error);
