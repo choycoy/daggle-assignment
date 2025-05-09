@@ -1,10 +1,19 @@
 import useLogin from "@/hooks/auth/useLogin";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UI_ERRORS } from "@/constant";
+import { useLocation } from "react-router-dom";
 
 export default function useLoginLogic() {
   const [input, setInput] = useState({ id: "", pwd: "" });
   const [error, setError] = useState({ idMsg: "", pwdMsg: "" });
+  const location = useLocation();
+  const hasAlert = location.state?.alert;
+
+  useEffect(() => {
+    if (hasAlert) {
+      alert(UI_ERRORS.LOGIN_REQUIRED);
+    }
+  }, [hasAlert]);
 
   const { id, pwd } = input;
   const { idMsg, pwdMsg } = error;
