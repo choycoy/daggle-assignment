@@ -68,7 +68,7 @@ export default function CommentSection({ postId }: { postId: string | undefined 
           disabled={!input}
           onClick={onSubmit}
           type="button"
-          className="black-btn tab:h-[52px] tab:w-[89px] h-12 w-[84px] cursor-pointer rounded-lg leading-[24px] font-bold tracking-[-0.048px]"
+          className={`black-btn tab:h-[52px] tab:w-[89px] h-12 w-[84px] rounded-lg leading-[24px] font-bold tracking-[-0.048px] ${!input ? "cursor-not-allowed" : "cursor-pointer"}`}
         >
           {isEditing ? "수정" : "등록"}
         </button>

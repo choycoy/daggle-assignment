@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import img1 from "@/assets/imgs/carousel1.png";
-import img2 from "@/assets/imgs/carousel2.png";
-import img3 from "@/assets/imgs/carousel3.png";
-import img4 from "@/assets/imgs/carousel4.png";
+import img1 from "../../../public/imgs/carousel1.png";
+import img2 from "../../../public/imgs/carousel2.png";
+import img3 from "../../../public/imgs/carousel3.png";
+import img4 from "../../../public/imgs/carousel4.png";
 
 export default function useImgCarousel() {
   const sliderRef = useRef<HTMLDivElement>(null);
