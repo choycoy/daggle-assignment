@@ -6,6 +6,7 @@ export const STORAGE_KEYS = {
 
 export const API_ERRORS = {
   INVALID_OR_EXPIRED_TOKEN: "Invalid or Expired Token",
+  LOGIN_REQUIRED: "Login Required",
 };
 
 export const QUERY_KEYS = {

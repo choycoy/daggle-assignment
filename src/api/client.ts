@@ -22,10 +22,24 @@ client.interceptors.response.use(
     const message = error.response?.data?.message;
 
     const isTokenErr = status === 401 && message === API_ERRORS.INVALID_OR_EXPIRED_TOKEN;
-
+    const needLogin = status === 401 && message === API_ERRORS.LOGIN_REQUIRED;
     if (isTokenErr && !isAuthErrorHandled) {
       isAuthErrorHandled = true;
       const event = new CustomEvent("authError", { detail: error });
+      window.dispatchEvent(event);
+
+      setTimeout(() => (isAuthErrorHandled = false), 3000);
+    }
+
+    if (needLogin && !isAuthErrorHandled) {
+      isAuthErrorHandled = true;
+
+      const event = new CustomEvent("forceLogin", {
+        detail: {
+          from: window.location.pathname,
+        },
+      });
+
       window.dispatchEvent(event);
 
       setTimeout(() => (isAuthErrorHandled = false), 3000);
