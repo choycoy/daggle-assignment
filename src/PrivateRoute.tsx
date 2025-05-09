@@ -1,8 +1,7 @@
 import { useAuthStore } from "@/store/useAuthStore";
 import { Navigate, useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { UI_ERRORS } from "./constant";
-import { useRef } from "react";
+import { UI_ERRORS, SESSION_KEYS } from "./constant";
 
 export default function PrivateRoute() {
   const { isLoggedIn } = useAuthStore();
@@ -11,12 +10,12 @@ export default function PrivateRoute() {
   const isHomePage = location.pathname === "/";
   const isPublicPage = isLoginPage || isHomePage;
   const isRedirected = location.state?.from || new URLSearchParams(location.search).get("from");
-  const hasShownAlert = useRef(false);
 
   if (!isLoggedIn && !isPublicPage && !isRedirected) {
-    if (!hasShownAlert.current) {
+    const alertShown = sessionStorage.getItem(SESSION_KEYS.LOGIN_ALERT_SHOWN);
+    if (!alertShown) {
       alert(UI_ERRORS.LOGIN_REQUIRED);
-      hasShownAlert.current = true;
+      sessionStorage.setItem(SESSION_KEYS.LOGIN_ALERT_SHOWN, "true");
     }
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
   }
