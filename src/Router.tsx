@@ -14,11 +14,11 @@ const Router = () => {
       <Suspense fallback={<div />}>
         <Routes>
           <Route index path="/" element={<Home />} />
-          <Route path="/post/:id" element={<PostDetail />} />
-          <Route path="/post/write" element={<PostForm />} />
 
           <Route element={<PrivateRoute />}>
             <Route path="/login" element={<Login />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/post/write" element={<PostForm />} />
           </Route>
         </Routes>
       </Suspense>
