@@ -28,10 +28,6 @@ export const UI_ERRORS = {
   CONTENT_LENGTH_ERROR: "최소 5자 이상 입력해주세요.",
 };
 
-export const API_ERRORS = {
-  INVALID_OR_EXPIRED_TOKEN: "Invalid or Expired Token",
-};
-
 export const CAROUSEL_DATA = [
   {
     id: 0,
