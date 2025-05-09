@@ -4,6 +4,10 @@ export const STORAGE_KEYS = {
   USER_ID_KEY: "user_id",
 };
 
+export const API_ERRORS = {
+  INVALID_OR_EXPIRED_TOKEN: "Invalid or Expired Token",
+};
+
 export const SESSION_KEYS = {
   LOGIN_ALERT_SHOWN: "loginAlertShown",
 };
